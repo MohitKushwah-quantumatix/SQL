@@ -1,0 +1,43 @@
+-- Create Departments Table
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(50),
+    Location VARCHAR(100)
+);
+
+-- Insert sample data into Departments
+INSERT INTO Departments (DepartmentID, DepartmentName, Location) VALUES
+(1, 'Finance', 'Mumbai'),
+(2, 'Engineering', 'Bangalore'),
+(3, 'Human Resources', 'Delhi'),
+(4, 'Marketing', 'Hyderabad'),
+(5, 'Sales', 'Chennai');
+
+-- Create Employees Table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    Phone VARCHAR(20),
+    Salary DECIMAL(10,2),
+    DateOfJoining DATE,
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+-- Insert sample data into Employees
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Email, Phone, Salary, DateOfJoining, DepartmentID) VALUES
+(101, 'Rahul', 'Sharma', 'rahul.sharma@example.com', '+91-9876543210', 75000.50, '2019-03-15', 2),
+(102, 'Anita', 'Verma', 'anita.verma@example.com', '+91-9876543211', 68000.00, '2020-07-01', 1),
+(103, 'Suresh', 'Patil', 'suresh.patil@example.com', NULL, 72000.75, '2018-01-12', 3),
+(104, 'Geeta', 'Iyer', 'geeta.iyer@example.com', '+91-9876543212', NULL, '2021-11-30', 2),
+(105, 'Karan', 'Mehta', NULL, '+91-9876543213', 54000.00, '2017-06-18', 5),
+(106, 'Pooja', 'Singh', 'pooja.singh@example.com', '+91-9876543214', 82000.25, '2022-02-10', 4),
+(107, 'Amit', 'Joshi', 'amit.joshi@example.com', NULL, 61000.00, '2023-09-05', 2),
+(108, 'Neha', 'Rao', 'neha.rao@example.com', '+91-9876543215', 59000.90, '2016-12-25', 1),
+(109, 'Vikram', 'Desai', NULL, '+91-9876543216', NULL, '2015-10-20', 3),
+(110, 'Sneha', 'Kapoor', 'sneha.kapoor@example.com', '+91-9876543217', 67000.00, '2019-08-14', 4);
+
+select * from Departments;
+select * from Employees;
