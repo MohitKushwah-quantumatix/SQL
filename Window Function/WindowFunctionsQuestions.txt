@@ -1,0 +1,67 @@
+**SQL Window Functions Practice Questions**
+
+Dataset: EmployeesPerformance
+
+1. Rank employees based on Salary (highest salary = rank 1).
+2. Dense Rank employees based on PerformanceRating (highest rating first).
+3. Assign Row Numbers to employees ordered by JoiningDate.
+4. Find the employee with the 2nd highest salary using RANK().
+5. Find the employee with the 2nd highest salary using DENSE_RANK().
+6. Find the 2nd most recent joiner using ROW_NUMBER().
+7. Rank employees within each Department based on Salary.
+8. Row Number employees within each Department ordered by JoiningDate.
+9. Dense Rank employees within each Department based on PerformanceRating.
+10. Find all employees who have the same salary rank.
+
+
+
+11. Show each employee’s salary along with the next employee's salary (based on salary descending).
+12. Show each employee’s salary along with the previous employee’s salary.
+13. Find the salary difference between an employee and the next employee.
+14. Find the salary difference between an employee and the previous employee.
+15. For each department, show each employee and the next joining employee.
+16. Find who joined immediately before and after each employee.
+17. Find employees whose salary increased compared to the previous employee (based on salary order).
+18. Show employees with lower salaries than the next employee.
+19. Compare each employee's performance rating with the next employee.
+20. Find the employee whose salary is immediately higher than Bob's salary.
+
+
+
+21. Find cumulative salary total ordered by salary descending.
+22. Find cumulative count of employees based on joining date.
+23. Calculate running average salary for all employees.
+24. Find the maximum salary within each department.
+25. Find the minimum performance rating within each department.
+26. Find average salary within each department.
+27. Find the difference between each employee's salary and department average salary.
+28. Find total salary per department using window function.
+29. Find the employee with the minimum joining date in each department.
+30. Find employees earning more than the average salary in their department.
+
+
+
+31. Find row number of employees partitioned by Department and ordered by Salary descending.
+32. Find the highest paid employee in each department.
+33. Find the second highest paid employee in each department.
+34. List employees who are the newest in their department.
+35. Find employees with the highest performance rating per department.
+36. Find employees whose performance rating is lower than the department average.
+37. Find employees who have the same salary within their department.
+38. Find how many employees joined before each employee in the same department.
+39. Find difference in joining date between each employee and the next one in their department.
+40. Rank employees across the company based on performance, break ties alphabetically by name.
+
+
+
+41. Find each employee’s salary compared to the maximum salary across all employees.
+42. Find employees who are the second most recent joiners in the company.
+43. Find cumulative sum of performance ratings.
+44. Show the performance rating of the employee who joined just before each employee.
+45. Find employees who have better performance than the employee who joined just before them.
+46. Find each employee’s rank in company tenure (JoiningDate ASC).
+47. Find salary gap between an employee and the previous higher salary employee.
+48. Show which employees are earning more than their previous colleague in the same department.
+49. Find employees who had the same joining year.
+50. Compare each employee's salary with the average salary across the company (without group by).
+
