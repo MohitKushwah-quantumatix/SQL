@@ -1,0 +1,72 @@
+-- Create a fresh database
+CREATE DATABASE JoinPracticeDB;
+GO
+USE JoinPracticeDB;
+GO
+
+-- Drop tables if they exist
+IF OBJECT_ID('dbo.Customers') IS NOT NULL DROP TABLE Customers;
+IF OBJECT_ID('dbo.Orders') IS NOT NULL DROP TABLE Orders;
+IF OBJECT_ID('dbo.Products') IS NOT NULL DROP TABLE Products;
+GO
+
+-- Table 1: Customers
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    CustomerName NVARCHAR(100),
+    Country NVARCHAR(50)
+);
+
+-- Table 2: Orders
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName NVARCHAR(100),
+    Price DECIMAL(10, 2)
+);
+
+-- Table 3: Orders
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    ProductID INT,
+    OrderDate DATE,
+    Quantity INT,
+    --FOREIGN KEY(CustomerID) REFERENCES Customers(CustomerID),
+    --FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+-- Insert into Customers
+INSERT INTO Customers VALUES
+(1, 'Alice', 'USA'),
+(2, 'Bob', 'UK'),
+(3, 'Charlie', 'Germany'),
+(4, 'Diana', 'USA'),
+(5, 'Evan', 'France');
+
+-- Insert into Products
+INSERT INTO Products VALUES
+(101, 'Laptop', 1000),
+(102, 'Phone', 500),
+(103, 'Tablet', 700),
+(104, 'Monitor', 300);
+
+-- Insert into Orders
+INSERT INTO Orders VALUES
+(1001, 1, 101, '2023-01-10', 1),
+(1002, 2, 102, '2023-01-15', 2),
+(1003, 1, 103, '2023-02-20', 1),
+(1004, 4, 104, '2023-03-05', 1), -- Invalid product ID
+(1005, 5, 102, '2023-03-10', 1); -- Invalid customer ID
+
+
+
+insert into customers values(6, 'Mohit', 'UK');
+
+insert into Products values(105, 'Phone', 700);
+insert into Products values(106, 'Tablet', 0);
+
+insert into Orders values(1006, null, null,'2023-01-13', 1);
+insert into Orders values(1006, null, null,'2023-01-13', 1);
+
+update customers set CustomerName = 'Mohit' where CustomerID = 6;
+update Orders set CustomerID = 6, ProductID = 106 where OrderID = 1006;

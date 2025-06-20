@@ -1,0 +1,122 @@
+-- Find employees who are older than 30 and work in IT.
+select FirstName, LastName from Employees where age > 30 and Department = 'IT';
+
+--Get all employees in HR or Marketing departments.
+select FirstName, LastName from Employees where Department = 'HR' or Department = 'Marketing';
+
+--Retrieve employees who are active and earn more than 60,000.
+select FirstName, LastName from Employees where IsActive = 1 and Salary > 60000;
+
+--List inactive employees in the Finance department.
+select FirstName, LastName, IsActive from Employees where IsActive = 0 and Department = 'Finance';
+
+--Find employees who are not in IT or HR.
+select FirstName, LastName, Department from Employees where Department != 'HR' and Department != 'IT';
+
+--Get employees earning more than 70,000.
+select FirstName, LastName, Salary from Employees where Salary > 70000;
+
+--List employees who are not in the Marketing department.
+select FirstName, LastName, Department from Employees where Department != 'Marketing';
+
+--Find employees hired before 2019.
+select FirstName, LastName from Employees where year(HireDate) < 2019;
+
+--Show employees aged less than or equal to 30.
+select FirstName, LastName, Age from Employees where age <= 30;
+
+--List employees with a salary equal to 85000.
+select FirstName, LastName, Salary from Employees where Salary = 85000;
+
+--Find employees with salary not equal to 50000.
+select FirstName, LastName, Salary from Employees where Salary != 50000;
+
+--Show employees whose age is greater than 35.
+select FirstName, LastName, Age from Employees where Age >= 35;
+
+--Find employees who were hired after 2021.
+select FirstName, LastName, HireDate from Employees where year(HireDate) > 2021;
+
+--Get employees where IsActive = 1.
+select FirstName, LastName from Employees where IsActive = 1;
+
+--List employees where FirstName = 'Alice'.
+select FirstName, LastName from Employees where FirstName = 'Alice';
+
+--Find employees whose first name starts with 'A'.
+select FirstName from Employees where FirstName like 'A%';
+
+--List employees whose last name ends with 'z'.
+select LastName from Employees where LastName like '%z';
+
+--Show employees whose first name contains 'an'.
+select FirstName, LastName from Employees where FirstName like '%an%';
+
+--Find employees whose last name includes the letter 'e'.
+select LastName from Employees where LastName like '%e%'; 
+
+--Get employees whose department name starts with 'F'.
+select FirstName, LastName, Department from Employees where Department like 'F%';
+--Retrieve employees whose first name does not contain 'i'.
+select FirstName, LastName from Employees where FirstName not in ('i');
+
+--Find employees whose first name has 'o' as the second letter.
+select FirstName, LastName from Employees where FirstName like '_o%';
+
+--Show employees whose last name is exactly 5 characters long.
+select FirstName, LastName from Employees where  len(LastName) = 5;
+
+--List employees whose names begin with 'J' and end with 'a'.
+select FirstName from Employees where FirstName like 'J%a'; 
+
+--Find Finance employees earning more than 60,000 and active.
+select FirstName, LastName, Department from Employees where Salary > 60000 and IsActive = 1;
+
+--Show Marketing employees not hired in 2022.
+select FirstName, LastName, Department from Employees where year(HireDate) <> 2022;
+
+--Get employees hired after 2020 who are under 35 years old.
+select FirstName, LastName from Employees where year(HireDate) > 2020 and Age < 35; 
+
+--Retrieve employees in HR or Finance with salary under 60,000.
+select FirstName, LastName from Employees where Department = 'HR' and Salary < 60000;
+
+--List employees with first name containing 'ia' and aged over 30.
+select FirstName from Employees where FirstName like '%ia%' and Age = 30;
+
+--Find employees in IT or Marketing and salary above 80,000.
+select FirstName from Employees where Department = 'IT' and Salary > 80000;
+
+--Get employees hired between 2010 and 2020 and inactive.
+select FirstName from Employees where year(HireDate) between 2010 and 2020;
+select FirstName from Employees where HireDate '' and  ;
+
+--Show employees who are either in HR or have a salary over 100,000.
+select Firstname, LastName from Employees where Department = 'HR' or Salary = 100000;
+
+--List all employees except those in IT or with salary > 100,000.
+select Firstname, LastName, Department, Salary from Employees where Department != 'IT' or Salary > 100000;
+
+--Retrieve active employees with even-numbered ages.
+select FirstName, LastName, Age from Employees where IsActive = 1 and (Age % 2 = 0);
+
+--Find employees whose last name includes both 'a' and 'z'.
+select LastName from Employees where LastName like '%a%' and lastname like '%z%';
+ 
+--List employees hired before 2016 or after 2022.
+select FirstName, LastName from Employees where year(HireDate) < 2016 or year(HireDate) > 2022;
+
+--Show employees who joined on Valentine's Day.
+select FirstName, LastName from Employees where day(HireDate) = 14 and month(HireDate) = 02;
+
+--Find all employees whose salary is a round number (ends in 000).
+select FirstName, LastName, Salary from Employees where str(Salary) like '%000';
+
+--List employees in HR whose names start with 'F' or 'A'.
+select FirstName, LastName from Employees where Department = 'HR' and FirstName like 'F%' or FirstName like 'A%';
+
+--Get employees aged 35 or above and not in Finance.
+select FirstName, LastName from Employees where Age >= 35 and Department != 'Finance'; 
+
+--Find employees with salary not in the range of 45k to 70k and hired after 2019.
+select Firstname, LastName from Employees where Salary not between 45000 and 70000 and year(HireDate) > 2019;

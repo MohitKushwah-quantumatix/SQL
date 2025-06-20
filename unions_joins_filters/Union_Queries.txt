@@ -1,0 +1,140 @@
+--List all unique employee names from both USA and UK.
+select Employees_UK.EmpName from Employees_UK
+union
+select Employees_USA.EmpName from Employees_USA 
+
+--Get all unique employee IDs from both countries.
+select Employees_UK.EmpID from Employees_UK
+union
+select Employees_USA.EmpID from Employees_USA 
+
+
+--Show distinct employee names who worked on either Project A or Project B.
+
+SELECT DISTINCT EmpName
+FROM Employees_UK
+JOIN Project_A ON Employees_UK.EmpID = Project_A.EmpID
+
+UNION
+
+SELECT DISTINCT EmpName
+FROM Employees_UK
+JOIN Project_B ON Employees_UK.EmpID = Project_B.EmpID
+
+UNION
+
+SELECT DISTINCT EmpName
+FROM Employees_USA
+JOIN Project_A ON Employees_USA.EmpID = Project_A.EmpID
+
+UNION
+
+SELECT DISTINCT EmpName
+FROM Employees_USA
+JOIN Project_B ON Employees_USA.EmpID = Project_B.EmpID;
+
+-- do it with exists too. [where exists()]
+
+--Retrieve all employee IDs who worked on either project, no duplicates.
+select distinct EmpID, ProjectName from Project_A
+union
+select distinct EmpID, ProjectName from Project_B;
+
+--Combine all unique project names from both Project A and Project B.
+select ProjectName from Project_A 
+union 
+select ProjectName from Project_B; 
+
+--Get all employee names from USA and UK, including duplicates.
+select Employees_UK.EmpName from Employees_UK
+union all
+select Employees_USA.EmpName from Employees_USA
+
+--List all employee IDs from Project A and Project B, even duplicates.
+select Employees_UK.EmpID from Employees_UK
+union all
+select Employees_USA.EmpID from Employees_USA
+
+--Combine all project names from both tables without removing duplicates.
+select projectname from Project_A 
+union all 
+select projectname from Project_B;
+
+--Show all employee names from both countries, even if repeated.
+select empname from Employees_UK 
+union all 
+select empname from Employees_USA ;
+
+--Retrieve all project assignments with duplication allowed.
+select empid,projectname from Project_A 
+union all 
+select empid,projectname from Project_B;
+
+--List employees who are in both USA and UK tables.
+select empid ,empname from Employees_USA
+intersect   --inner join can also be used
+select empid, empname from Employees_UK;
+
+--Show employee IDs that are in both Project A and Project B.
+select empid from Project_A
+intersect  --inner join can also be used
+select empid from Project_B;
+
+--Find employee names common to both USA and UK.
+select empname from Employees_USA
+intersect --inner join can also be used
+select empname from Employees_UK;
+
+--Retrieve employees who worked on both projects.
+select empid from Project_A
+intersect
+select empid from Project_B;
+
+--Get project names common to both Project A and Project B.
+select projectname from Project_A
+intersect 
+select projectname from Project_B
+
+--Find employees who are only in USA and not in UK.
+select empname from Employees_USA
+except
+select empname from Employees_UK;  
+
+--Get employees who worked only in Project A but not Project B.
+select empid from Project_A
+except 
+select EmpID from Project_B
+
+
+--Show employees who are only in UK and not USA.
+select empname from Employees_UK
+except
+select empname from Employees_USA;
+
+
+--Retrieve project names from Project B that are not in Project A.
+select projectname from Project_B
+except
+select projectname from Project_A
+
+--List employee IDs present in Project A but missing from Project B.
+select empid from Project_A
+except
+select empid from Project_B;
+
+--Find names of employees who are in UK but not in USA, and also worked on Project B.
+
+select Employees_UK.EmpName from Employees_UK
+join Project_B
+on Project_B.EmpID = Employees_UK.EmpID
+
+except
+
+select Employees_USA.EmpName from Employees_USA 
+join Project_B
+on Project_B.EmpID = Employees_USA.EmpID;
+
+-- other method 
+select UK.empname from Employees_UK uk left join Employees_USA usa on uk.empID = USA.EmpID
+inner join Project_B PB on UK.EmpID = PB.EmpID
+where USA.EmpID is null;
